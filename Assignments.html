@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+ <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 p-8">
+<section class="rounded-2xl bg-white p-6 shadow-sm">
+    <div class="mb-5">
+        <h2 class="text-xl font-semibold text-gray-800"> Assignments</h2>
+        <p class="mt-1 text-sm text-gray-500"> 
+            Your schoolwork, all in one place
+        </p>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="w-full text-left">
+            <thead>
+                <tr class="border-b border-gray-100 text-sm text-gray-500">
+                    <th class="px-4 py-3 font-medium">Assignment</th>
+                    <th class="px-4 py-3 font-medium">Subject</th>
+                    <th class="px-4 py-3 font-medium">Due Date</th>
+                    <th class="px-4 py-3 font-medium">Done</th>
+                    <th class="px-4 py-3 font-medium">Remove</th>
+                </tr>
+            </thead>
+
+            <tbody 
+                id="assignmentList"
+                class="divide-y divide-gray-100 text-sm text-gray-700">
+            </tbody>
+        </table>
+    </div>
+
+    <form id="assignmentForm" class="mb-6 grid gap-3 sm:grid-cols-2">
+    
+        <input
+        id="assignmentName"
+        type="text"
+        placeholder="Assignment name"
+        required
+        class="rounded-2xl border border-gray-200 px-4 py-3"
+        >
+    
+        <input
+        id="assignmentSubject"
+        type="text"
+        placeholder="Subject"
+        required
+        class="rounded-2xl border border-gray-200 px-4 py-3"
+        >
+    
+        <input
+        id="assignmentDueDate"
+        type="date"
+        required
+        class="rounded-2xl border border-gray-200 px-4 py-3"
+        >
+
+        <button
+        type="submit"
+        class="rounded-xl bg-purple-200 px-4 py-3 font-medium text-purple-900 hover:bg-purple-300"
+        >
+            + Add Assignment
+        </button>
+    
+    </form>
+
+</section>
+<script src="main.js"></script>
+</body>
+
+
+</html>
