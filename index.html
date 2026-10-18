@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-
- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<h1 class="text-4xl text-white">Student-Dash</h1>
-<body style="background-color: rgb(49, 51, 51);">
+<body style="background-color: rgb(184, 216, 216);">
+<header class="mx-auto max-w-5xl px-6 pt-8">
+    <h1 class="text-4xl font-bold text-pink-300">Student Dash</h1>
+    <p class="mt-1 text-sm text-pink-300">Your schoolwork, organized.</p>
+</header>
+<main class="mx-auto max-w-5xl p-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section class="border border-pink-100 md:col-span-2 rounded-2xl bg-white/90 p-6 shadow-sm">
+        <h2 class="text-xl font-bold text-pink-300">Upcoming Assignments</h2>
+        <p class="mt-2 text-sm text-slate-500">Your next assignments, all in one place.</p>
+    <div id="upcomingAssignments" class="mt-4 space-y-3">
+        <p id="emptyMessage" class="rounded-xl bg-pink-50 p-4 text-sm text-slate-500">
+    No upcoming assignments. You're all caught up!
+</p>
+    </div>
+    <a href="Assignments.html" class="mt-4 inline-block rounded-xl bg-pink-100 px-4 py-2 font-semibold text-pink-800 no-underline transition hover:bg-pink-200">
+        View all assignments 
 
+    </a>
+    </section>
 
+    <section class="rounded-2xl border border-pink-100 bg-white/90 p-6 shadow-sm">
+        <h2 class="text-2xl font-bold text-pink-300">Assignment Stats</h2>
 
+        <div class="mt-4">
+            <p class="text-sm text-slate-500">Remaining</p>
+            <p id="remainingCount" class="text-3xl font-bold text-pink-300">0</p>
+        </div>
+
+        <div class="mt-4">
+            <p class="text-sm text-slate-500">Completed</p>
+            <p id="completedCount" class="text-3xl font-bold text-pink-300">0</p>
+        </div>
+    </section>
+</div>
+</main>
+
+    <script src="dash.js"></script>
 </body>
 </html>

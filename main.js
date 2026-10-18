@@ -7,8 +7,22 @@ const assignmentName = document.getElementById("assignmentName");
 const assignmentSubject = document.getElementById("assignmentSubject");
 const assignmentDueDate = document.getElementById("assignmentDueDate");
 const assignmentList = document.getElementById("assignmentList") 
+let sortAscending = true;
+const sortDueDate = document.getElementById("sortDueDate");
 
 function renderAssignments() {
+    // Sort incomplete assignments first, then by due date
+    assignments.sort(function(a, b) {
+        if (a.completed !== b.completed) {
+            return a.completed ? 1 : -1;
+        }
+
+        if (sortAscending) {
+            return a.dueDate.localeCompare(b.dueDate);
+        } else {
+            return b.dueDate.localeCompare(a.dueDate);
+        }
+    });
     assignmentList.innerHTML = "";
 
 
@@ -18,7 +32,6 @@ function renderAssignments() {
         //assignment name cell
         const nameCell = document.createElement("td");
         nameCell.textContent = assignment.name;
-        nameCell.className = "px-4 py-4";
         
         //subject name cell
         const subjectCell = document.createElement("td");
@@ -27,14 +40,19 @@ function renderAssignments() {
 
         // Due date cell
         const dateCell = document.createElement("td");
-        dateCell.textContent = assignment.dueDate;
+        const [year, month, day] = assignment.dueDate.split("-");
+        dateCell.textContent = `${month}/${day}/${year.slice(-2)}`;
         dateCell.className = "px-4 py-4";
 
         // Done cell
         const doneCell = document.createElement("td");
-        doneCell.textContent = assignment.completed ? "✓" : "X";
+        doneCell.textContent = assignment.completed ? "Done" : "Not done";
         doneCell.className = "px-4 py-4";
-
+        doneCell.addEventListener("click", function(){
+            assignment.completed = !assignment.completed;
+            localStorage.setItem("assignments", JSON.stringify(assignments));
+            renderAssignments();
+        })
 
         // Remove button cell
         const removeCell = document.createElement("td");
@@ -64,6 +82,18 @@ function renderAssignments() {
         // Add the row to the table
         assignmentList.appendChild(row);
 
+        //Done functionality 
+        if (assignment.completed) {
+            nameCell.className = "bg-green-100 text-green-800"; 
+            subjectCell.className = "bg-green-100 text-green-800";
+            dateCell.className = "bg-green-100 text-green-800";
+            doneCell.className = "bg-green-100 text-green-800";
+            removeCell.className = "bg-green-100 text-green-800";
+        } else {
+            nameCell.className = "px-4 py-4";
+        }
+        
+
     }
 
 
@@ -90,4 +120,16 @@ assignmentForm.addEventListener("submit", function(event) {
 
     renderAssignments();
     assignmentForm.reset();
+
+
+});
+
+//Sorting function
+function sortAssignments() {
+
+    renderAssignments();
+}
+sortDueDate.addEventListener("click", function() {
+    sortAssignments();
+    sortAscending = !sortAscending;
 });
