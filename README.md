@@ -32,4 +32,10 @@ Assignments are saved in the browser's local storage, so they remain available w
 - Mark assignments as completed.
 - Organize assignments by subject and due date.
 - View the three most urgent incomplete assignments on the main dashboard.
-- Track
+- Track remaining and completed assignments with dashboard statistics.
+- Save assignments using browser local storage
+
+## Built with 
+- HTML - for the structure of the website.
+- Tailwind CSS - for styling and layout.
+- JavaScript - for assignment management and dashboard functionality.
